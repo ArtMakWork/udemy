@@ -34,3 +34,19 @@
         align-items: flex-end;
     }
 }
+@media (max-width: 575px){
+	.header{
+        &__logo{
+            width: 100px;
+        }
+        &__official{
+            font-size: 8px;
+            span{
+                font-size: 10px;
+            }
+        }
+        &__phone{
+            font-size: 10px;
+        }
+    }
+}

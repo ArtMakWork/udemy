@@ -7,6 +7,16 @@
     max-width: 950px;
     margin: 0 auto;
 }
+@media (max-width: 575px){
+	.container {
+		max-width: 300px;
+		margin: 0 auto;
+	}
+}
+
+
+
+
 @import 'blocks/promo.scss';
 @import 'blocks/header.scss';
 @import 'blocks/buttons.scss';

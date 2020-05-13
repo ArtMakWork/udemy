@@ -15,3 +15,16 @@
         font-size: 16px;
     }
 }
+@media (max-width: 575px){
+    .button{
+        width: 75px;
+        height: 20px;
+        font-size: 7px;
+        &_main{
+            margin-top: 15px;
+            width: 200px;
+            height: 40px;
+            font-size: 12px;
+        }
+    }
+}
