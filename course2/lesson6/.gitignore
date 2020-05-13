@@ -1,5 +1,8 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# ignore all .a files
+*.psd
+
 # dependencies
 /node_modules
 
