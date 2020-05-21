@@ -169,3 +169,30 @@
         }
     }
 }   
+
+@media (max-width: 575px){
+    .catalog{
+        margin-top: 50px;
+        padding-bottom: 50px;
+        &__tabs{
+            margin-top: 35px;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0;
+            padding-left: 0;
+        }
+        &__tab{
+            margin-top: 10px;
+            width: 220px;
+            div{
+                transform: skewX(25deg);
+            }
+        }
+        &__content{
+            margin-top: 30px;
+        }
+        
+    } 
+}

@@ -1,6 +1,5 @@
 .carousel{
     padding: 81px 0px;
-    
     &__inner{
         width: 750px;
         margin: 0 auto;
@@ -19,8 +18,14 @@
         height: 50px;
     }
 }
-
 .slick-next{
     right: -66px;
     left: auto;
 }
+
+@media (max-width: 575px){
+    .carousel{
+        display: none;
+    }
+}
+
