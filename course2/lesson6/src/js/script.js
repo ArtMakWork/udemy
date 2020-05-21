@@ -45,4 +45,33 @@ $(document).ready(function(){
             $('.overlay, #order').fadeIn();
         })
     });
+
+    //validation jQuery
+    function validateForms(form){
+        $(form).validate({
+            rules:{
+                name: "required",
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: "Пожалуйста, введите имя",
+                phone: "Пожалуйста, введите номер телефона",
+                email: {
+                    required: "Введите корректный email",
+                    email: "Формат email должен быть: name@domain.com"
+                }
+            }
+        });
+    };
+
+    validateForms('#consultation-form');
+    validateForms('#consultation form');
+    validateForms('#order form');
+
+    $('input[name=phone]').mask("+38 (099) 999-99-99");
+
 }); 
