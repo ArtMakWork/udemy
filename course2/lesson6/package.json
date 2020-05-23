@@ -22,5 +22,9 @@
     "not IE 11",
     "not IE_Mob 11",
     "maintained node versions"
-  ]
+  ],
+  "dependencies": {
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^7.1.0"
+  }
 }
