@@ -1,24 +1,17 @@
-@import 'base/animation.scss';
-@import 'base/variables';
+@import 'libs/bootstrap-reboot.min.scss';
+@import 'libs/font.scss';
+@import 'libs/slick.scss';
 
-@import 'base/media.scss';
+@import 'base/animation.scss';
+@import 'base/variables.scss';
+
 * {
-    font-family: 'Museo Sans Cyrl', sans-serif;
+	font-family: 'Museo Sans Cyrl', sans-serif;
 }
 .container {
-    max-width: 950px;
+	max-width: 950px;
     margin: 0 auto;
 }
-@media (max-width: 575px){
-	.container {
-		max-width: 300px;
-		margin: 0 auto;
-	}
-}
-
-
-
-
 
 @import 'blocks/promo.scss';
 @import 'blocks/header.scss';
@@ -33,3 +26,12 @@
 @import 'blocks/footer.scss';
 @import 'blocks/modal.scss';
 @import 'blocks/pageup.scss';
+
+
+@media (max-width: 575px){
+	.container {
+		max-width: 300px;
+		margin: 0 auto;
+	}
+}
+@import 'base/media.scss';
