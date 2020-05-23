@@ -1,5 +1,7 @@
 @import 'base/animation.scss';
 @import 'base/variables';
+
+@import 'base/media.scss';
 * {
     font-family: 'Museo Sans Cyrl', sans-serif;
 }
@@ -13,6 +15,7 @@
 		margin: 0 auto;
 	}
 }
+
 
 
 

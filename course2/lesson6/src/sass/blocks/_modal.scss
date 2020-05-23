@@ -52,18 +52,3 @@
 #consultation, #order,  #thanks{
     display: none;
 }
-
-@media (max-width: 575px){
-    .modal{
-        width: 280px;
-        min-height: 250px;
-        padding: 20px;
-        &__close{
-            top: -40px;
-            right: 0px;
-        }
-        &__subtitle{
-            font-size: 18px;
-        }
-    }
-}

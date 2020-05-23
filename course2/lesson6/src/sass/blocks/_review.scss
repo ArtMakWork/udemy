@@ -35,19 +35,3 @@
         border-bottom: none;
     }
 }
-@media (max-width: 575px){
-    .review {
-        padding-bottom: 35px;
-        &__item{
-            margin-top: 35px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            &__img{
-                margin-bottom: 50px;
-                width: 50%;
-                height: 50%;
-            }
-        }
-    }
-}

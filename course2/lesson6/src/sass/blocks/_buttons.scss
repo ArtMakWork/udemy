@@ -29,27 +29,3 @@
         font-size: 16px;
     }
 }
-@media (max-width: 575px){
-    .button{
-        width: 75px;
-        height: 20px;
-        font-size: 6px;
-        &_main{
-            margin-top: 15px;
-            width: 200px;
-            height: 40px;
-            font-size: 12px;
-        }
-        &_submit{
-            width: 100%;
-            height: 27px;
-            font-size: 16px;
-            color: #ffffff;
-        }
-        &_mini{
-            width: 131px;
-            height: 40px;
-            font-size: 16px;
-        }
-    }
-}

@@ -1,0 +1,188 @@
+@media (max-width: 575px){
+    .advantages{
+        padding: 30px 0 40px 0;
+        &__wrapper{
+            flex-direction: column;
+            align-items: center;
+            margin-top: 15px;
+        }
+        &__item{
+            margin-top: 25px;
+            max-width: 250px;
+        }
+        &__subtitle{
+            margin-top: 15px;
+            font-size: 15px;
+        }
+        &__descr{
+            margin-top: 10px;
+            font-size: 12px;
+        }
+    }
+    .button{
+        width: 75px;
+        height: 20px;
+        font-size: 6px;
+        &_main{
+            margin-top: 15px;
+            width: 200px;
+            height: 40px;
+            font-size: 12px;
+        }
+        &_submit{
+            width: 100%;
+            height: 27px;
+            font-size: 16px;
+            color: #ffffff;
+        }
+        &_mini{
+            width: 131px;
+            height: 40px;
+            font-size: 16px;
+        }
+    }
+    .carousel{
+        display: none;
+    }
+    .catalog{
+        margin-top: 50px;
+        padding-bottom: 50px;
+        &__tabs{
+            margin-top: 35px;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0;
+            padding-left: 0;
+        }
+        &__tab{
+            margin-top: 10px;
+            width: 220px;
+            div{
+                transform: skewX(25deg);
+            }
+        }
+        &__content{
+            margin-top: 30px;
+        }
+        
+    } 
+    .consultation{
+        min-height: 340px;
+        padding: 50px 0 46px 0;
+        &__descr{
+            font-size: 12px;
+        }
+    }
+    .footer{
+        &__info{
+            width: 300px;
+            height: 170px;
+            background-color: $main-color;
+            padding: 25px 34px 30px 34px;        
+        }
+        &__addr{
+            margin-bottom: 18px;
+            font-size: 12px;
+            line-height: 12px;
+        }
+        &__phone{
+            margin-bottom: 19px;
+            font-size: 12px;
+            line-height: 12px;
+        }
+        &__social-item{
+            width: 50px;
+            height: 50px;
+        }
+    }
+    .feed-form{
+        margin-top: 18px;
+        width: 250px;
+        input{
+            height: 25px;
+            margin-bottom: 8px;
+            padding: 0 10px;
+            font-size: 12px;
+            &:nth-child(3){
+                margin-bottom: 12px;
+            }
+        }
+    }
+    .header{
+        &__logo{
+            width: 100px;
+        }
+        &__official{
+            font-size: 8px;
+            span{
+                font-size: 10px;
+            }
+        }
+        &__phone{
+            font-size: 10px;
+        }
+    }
+    .modal{
+        width: 280px;
+        min-height: 250px;
+        padding: 20px;
+        &__close{
+            top: -40px;
+            right: 0px;
+        }
+        &__subtitle{
+            font-size: 18px;
+        }
+    }
+    .promo{
+        min-height: 200px;
+        padding: 10px 0 20px 0;
+        &__wrapper{
+            margin-top: 30px;
+        }
+        &__header{
+            font-size: 24px;
+        }
+        &__subheader{
+            margin-top: 8px;
+            font-size: 12px;
+        }
+        &__icons{
+            margin-top: 30px;
+            width: 250px;
+        }
+        &__icon{
+            width: 50px;
+            font-size: 12px;
+            img{
+                margin-bottom: 10px;
+            }
+        }
+        &__link{
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    }
+    .review {
+        padding-bottom: 35px;
+        &__item{
+            margin-top: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            &__img{
+                margin-bottom: 50px;
+                width: 50%;
+                height: 50%;
+            }
+        }
+    }
+    .title {
+        font-size: 20px;
+        &_left{
+            font-size: 18px;
+        }
+    }
+}

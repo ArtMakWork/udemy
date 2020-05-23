@@ -54,34 +54,3 @@
     }
 }
 
-@media (max-width: 575px){
-    .promo{
-        min-height: 200px;
-        padding: 10px 0 20px 0;
-        &__wrapper{
-            margin-top: 30px;
-        }
-        &__header{
-            font-size: 24px;
-        }
-        &__subheader{
-            margin-top: 8px;
-            font-size: 12px;
-        }
-        &__icons{
-            margin-top: 30px;
-            width: 250px;
-        }
-        &__icon{
-            width: 50px;
-            font-size: 12px;
-            img{
-                margin-bottom: 10px;
-            }
-        }
-        &__link{
-            font-size: 12px;
-            margin-top: 10px;
-        }
-    }
-}

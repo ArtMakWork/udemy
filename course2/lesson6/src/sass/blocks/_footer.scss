@@ -60,27 +60,3 @@
         border: none;
     }
 }
-@media (max-width: 575px){
-    .footer{
-        &__info{
-            width: 300px;
-            height: 170px;
-            background-color: $main-color;
-            padding: 25px 34px 30px 34px;        
-        }
-        &__addr{
-            margin-bottom: 18px;
-            font-size: 12px;
-            line-height: 12px;
-        }
-        &__phone{
-            margin-bottom: 19px;
-            font-size: 12px;
-            line-height: 12px;
-        }
-        &__social-item{
-            width: 50px;
-            height: 50px;
-        }
-    }
-}
