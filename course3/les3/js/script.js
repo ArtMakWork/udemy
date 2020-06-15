@@ -41,7 +41,11 @@ window.addEventListener('DOMContentLoaded',()=>{
 
     function getTimeRemaining(endtime){
         const now = new Date();
-        const t = Date.parse(endtime) - Date.parse(now);
+        const x = 1000*60*60*3;
+        
+        let t = Date.parse(endtime);
+        t = t - x;
+        t = t - Date.parse(now);
         let days = Math.floor(t/(1000*60*60*24));
         let hours = Math.floor((t/(1000*60*60))%24);
         let minutes = Math.floor((t/1000/60)%60);
@@ -172,13 +176,24 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
         
     }
-
-    new MenuCard ('Меню "Фитнес"','Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!', 9,'"img/tabs/vegy.jpg"','vegy','.menu .container').render();
     
-    new MenuCard ('Меню “Премиум”','В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!', 14,'"img/tabs/elite.jpg"','elite','.menu .container').render();
-    
-    new MenuCard ('Меню "Постное"','Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков. ',21,'"img/tabs/post.jpg"','post','.menu .container').render();
+    const getResourses = async (url) => {
+        const res = await fetch(url);
+        
+        if (!res.ok){
+            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+        }
 
+        return await res.json();
+    };
+
+    getResourses('http://localhost:3000/menu')
+        .then(data => {
+            data.forEach( ({title, descr, price, img, altimg}) => {
+                new MenuCard (title, descr, price, img, altimg, '.menu .container').render();
+            });
+        });
+    
     //Forms
     const forms = document.querySelectorAll('form');
 
@@ -189,10 +204,22 @@ window.addEventListener('DOMContentLoaded',()=>{
     };
 
     forms.forEach(item =>{
-        postData(item);
+        bindPostData(item);
     });
 
-    function  postData (form){
+    const postData = async (url, data) => {
+        const res = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: data
+        });
+        
+        return await res.json();
+    };
+    
+    function  bindPostData (form){
         form.addEventListener('submit', (e)=>{
             e.preventDefault();
    
@@ -205,25 +232,17 @@ window.addEventListener('DOMContentLoaded',()=>{
             form.insertAdjacentElement('afterend',statusMessage);
 
             const formData = new FormData(form);
-            const object = {};
-
-            formData.forEach(function(value, key){
-                object[key] = value;
-            });
             
-            fetch('server.php',{
-                method: "POST",
-                headers: {
-                'Content-type': 'application/json'
-                },
-                body: JSON.stringify(object)
-            }).then(data => data.text()).then(data => {
+            const json = JSON.stringify(Object.fromEntries(formData.entries()));
+            
+            postData('http://localhost:3000/requests', json)
+            .then(data => {
                 console.log(data);
                 showThanksModal(message.success);
                 statusMessage.remove();
-            }).catch( () => {                   //отлов ошибок
+            }).catch(() => {
                 showThanksModal(message.failure);
-            }).finally( ()=>{
+            }).finally(() => {
                 form.reset();
             });
         });
@@ -253,10 +272,113 @@ window.addEventListener('DOMContentLoaded',()=>{
         },4000);
     }
 
+    //slider
+    const slider = document.querySelector('.offer__slider');
+    const slides = document.querySelectorAll('.offer__slide');
+    const prev = document.querySelector('.offer__slider-prev');
+    const next = document.querySelector('.offer__slider-next');
+    const current = document.querySelector('#current');
+    const total = document.querySelector('#total');
+    const slidesWrapper = document.querySelector('.offer__slider-wrapper');
+    const width = window.getComputedStyle(slidesWrapper).width;
+    const slidesField = document.querySelector('.offer__slider-inner');
+    
+    let slideIndex = 1;
+    let offset = 0;
+    const dots = [];
+
+    function addZeroToCounter(ind,field){
+        if (ind < 10) {
+            field.textContent =  `0${ind}`;
+        } else {
+            field.textContent =  ind;
+        }
+    }
+
+    function slidersIndicators (){
+        addZeroToCounter(slideIndex, current);
+        slidesField.style.transform = `translateX(-${offset}px)`;
+        dots.forEach(dot => dot.style.opacity = '0.5');
+        dots[slideIndex-1].style.opacity = 1;
+    }
+    
+    slidesField.style.width = 100 * slides.length + '%';
+    slidesField.style.display = 'flex';
+    slidesField.style.transition = '0.5s all';
+
+    slidesWrapper.style.overflow = 'hidden';
+
+    slides.forEach(slide => {
+        slide.style.width = width;
+    });
+
+    slider.style.position = 'relative';
+    const indicators = document.createElement('ol');
+    
+    indicators.classList.add('carousel-indicators');
+    slider.append(indicators);
+    
+    for (let i = 0; i < slides.length; i++) {
+        const dot = document.createElement('li');
+        dot.setAttribute('data-slide-to', i + 1);
+        dot.classList.add('dot');
+        if (i==0) {
+            dot.style.opacity = 1;
+        }
+        indicators.append(dot);
+        dots.push(dot);
+    }
+    
+    next.addEventListener('click', () => {
+        if (offset == (+width.slice(0, width.length - 2) * (slides.length - 1))) {
+            offset = 0;
+        } else {
+            offset += +width.slice(0, width.length - 2); 
+        }
+        
+        if (slideIndex == slides.length) {
+            slideIndex = 1;
+        } else {
+            slideIndex++;
+        }
+        
+        slidersIndicators();
+    });
+
+    prev.addEventListener('click', () => {
+        if (offset == 0) {
+            offset = +width.slice(0, width.length - 2) * (slides.length - 1);
+        } else {
+            offset -= +width.slice(0, width.length - 2);
+        }
+        
+        if (slideIndex == 1) {
+            slideIndex = slides.length;
+        } else {
+            slideIndex--;
+        }
+        
+        slidersIndicators();
+    });
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+            const slideTo = e.target.getAttribute('data-slide-to');
+            
+            slideIndex = slideTo;
+            offset = +width.slice(0, width.length - 2) * (slideTo - 1);
+            
+            slidersIndicators();
+        });
+    });
+
     
     //Start site
     hideTabContent();
     showTabContent(0);
     
     setClock(".timer", deadline);
+
+    addZeroToCounter(slideIndex, current);
+    addZeroToCounter(slides.length, total);
 });
