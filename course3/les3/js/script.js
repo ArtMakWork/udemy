@@ -7,6 +7,8 @@ window.addEventListener('DOMContentLoaded', function() {
           forms = require('./modules/forms'),
           slider = require('./modules/slider');
 
+
+
     tabs();
     modal();
     timer();

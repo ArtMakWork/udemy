@@ -569,11 +569,12 @@ function slider() {
     });
 
     function deleteNotDigits(str) {
-        return +str.replace(/\D/g, '');
+        return +str.substring(0, str.length-2);
     }
 }
 
 module.exports = slider;
+
 
 /***/ }),
 
@@ -712,6 +713,8 @@ window.addEventListener('DOMContentLoaded', function() {
           calc = __webpack_require__(/*! ./modules/calc */ "./js/modules/calc.js"),
           forms = __webpack_require__(/*! ./modules/forms */ "./js/modules/forms.js"),
           slider = __webpack_require__(/*! ./modules/slider */ "./js/modules/slider.js");
+
+
 
     tabs();
     modal();
