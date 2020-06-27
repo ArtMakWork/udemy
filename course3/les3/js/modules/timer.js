@@ -1,7 +1,5 @@
-function timer () {
-    //Timer
-    const deadline = "2020-07-24";
-
+function timer (id, deadline) {
+    
     function getTimeRemaining(endtime){
         const now = new Date();
         const x = 1000*60*60*3;
@@ -55,6 +53,6 @@ function timer () {
         }
     }
 
-    setClock(".timer", deadline);
+    setClock(id, deadline);
 }
 export default timer;
