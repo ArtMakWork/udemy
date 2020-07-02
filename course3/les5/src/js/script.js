@@ -1,3 +1,5 @@
-import {mmm} from '../../src/js/index';
+"use strict";
 
-mmm();
+var _index = require("../../src/js/index");
+
+(0, _index.mmm)();
