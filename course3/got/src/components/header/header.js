@@ -1,27 +1,27 @@
 import React from 'react';
 import './header.css';
+import {Link} from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className="headerBlock">
-                <h3 className="headerTitle">
-                    <a href="#">
-                    Game of Thrones DB
-                    </a>
-                </h3>
-                <ul className="headerLinks">
-                    <li>
-                        <a href="#">Characters</a>
-                    </li>
-                    <li>
-                        <a href="#">Houses</a>
-                    </li>
-                    <li>
-                        <a href="#">Books</a>   
-                    </li>
-                </ul>
-            </div>
-            
+        <div className="header">
+            <h3 className="header-title">
+                <Link to='/'>
+                Game of Thrones DB
+                </Link>
+            </h3>
+            <ul className="header-list">
+                <li>
+                    <Link to='/characters/'>Characters</Link>
+                </li>
+                <li>
+                    <Link to='/houses/'>Houses</Link>
+                </li>
+                <li>
+                    <Link to='/books/'>Books</Link>   
+                </li>
+            </ul>
+        </div>
     );
 };
 
