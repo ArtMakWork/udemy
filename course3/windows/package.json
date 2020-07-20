@@ -23,5 +23,11 @@
     "gulp": "^4.0.2",
     "webpack": "^4.41.2",
     "webpack-stream": "^5.2.1"
+  },
+  "dependencies": {
+    "carousel": "0.0.3",
+    "jquery": "^3.5.1",
+    "slick": "^1.12.2",
+    "slick-carousel": "^1.8.1"
   }
 }
