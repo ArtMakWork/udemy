@@ -2,6 +2,8 @@
 
 # ignore all .a files
 *.psd
+*.gitignore
+package-lock.json
 
 # dependencies
 /node_modules
